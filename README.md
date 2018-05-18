@@ -9,3 +9,20 @@ This program simulates a DFA machine that recognizes a floating point number.
 
 ## State Diagram
 <img src="img/floatpoint.png" />
+
+## Transition Table
+DFA | 0-9  | +    | -    | .    | e    | E
+--- | ---- | ---- | ---- | ---- | ---- | ----
+q0  | q3   | q2   | q1   | q4   | Dead | Dead
+q1  | q3   | Dead | Dead | q5   | Dead | Dead
+q2  | q3   | Dead | Dead | q5   | Dead | Dead
+q3  | q3   | Dead | Dead | q4   | Dead | Dead
+q4  | q6   | Dead | Dead | Dead | q7   | q8
+q5  | q6   | Dead | Dead | Dead | q7   | q8
+q6  | q6   | Dead | Dead | Dead | q7   | q8
+q7  | q9   | q10  | q11  | Dead | Dead | Dead
+q8  | q9   | q10  | q11  | Dead | Dead | Dead
+q9  | q9   | Dead | Dead | Dead | Dead | Dead
+q10 | q9   | Dead | Dead | Dead | Dead | Dead
+q11 | q9   | Dead | Dead | Dead | Dead | Dead
+Dead| Dead | Dead | Dead | Dead | Dead | Dead
