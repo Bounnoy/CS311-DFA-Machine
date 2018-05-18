@@ -26,3 +26,18 @@ q9  | q9   | Dead | Dead | Dead | Dead | Dead
 q10 | q9   | Dead | Dead | Dead | Dead | Dead
 q11 | q9   | Dead | Dead | Dead | Dead | Dead
 Dead| Dead | Dead | Dead | Dead | Dead | Dead
+
+## Examples of Accepted Strings
+0.5
+.5
+.5e+4
+.5e4
+.5E4
+.5E-4
++.5E-4
+-.5E-4
+-2.E-4
+23.
+23.e2
+232663
+23.3523e21
