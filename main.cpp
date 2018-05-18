@@ -5,6 +5,7 @@
 // floating point number. It will display the results as either pass or fail on each string.
 
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 int main(int argc, char * argv[])
@@ -31,7 +32,33 @@ int main(int argc, char * argv[])
     } while (strlen(filename) == 0);
   }
 
-  cout << "Filename: " << filename << endl;
+  // Load file.
+  ifstream file;
+  file.open(filename);
+
+  // Check if file exists.
+  if (file.fail())
+  {
+    cerr << endl << "Error retrieving file." << endl;
+    return 1;
+  }
+
+  // Read file.
+  char input;
+
+  while (file >> input)
+  {
+    cout << input;
+
+    if (file.peek() == '\n')
+    {
+      cout << endl;
+      file.ignore();
+    }
+  }
+
+  // Close file.
+  file.close();
 
   return 0;
 }
