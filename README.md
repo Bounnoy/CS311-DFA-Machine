@@ -8,7 +8,7 @@ This program simulates a DFA machine that recognizes a floating point number.
 <img src="https://latex.codecogs.com/gif.latex?\sum&space;=&space;\{0-9,&space;e,&space;E,&space;&plus;,&space;-,&space;.\}" title="\sum = \{0-9, e, E, +, -, .\}" />
 
 ## State Diagram
-<img src="img/floatpoint.png" />
+<img src="img/diagram1.png" />
 
 ## Transition Table
 DFA | 0-9  | +    | -    | .    | e    | E
@@ -18,7 +18,7 @@ q1  | q3   | Dead | Dead | q5   | Dead | Dead
 q2  | q3   | Dead | Dead | q5   | Dead | Dead
 q3  | q3   | Dead | Dead | q4   | Dead | Dead
 q4  | q6   | Dead | Dead | Dead | q7   | q8
-q5  | q6   | Dead | Dead | Dead | q7   | q8
+q5  | q6   | Dead | Dead | Dead | Dead | Dead
 q6  | q6   | Dead | Dead | Dead | q7   | q8
 q7  | q9   | q10  | q11  | Dead | Dead | Dead
 q8  | q9   | q10  | q11  | Dead | Dead | Dead
@@ -46,7 +46,7 @@ Dead| Dead | Dead | Dead | Dead | Dead | Dead
 
 -2.E-4
 
-23.
+23\.
 
 23.e2
 
