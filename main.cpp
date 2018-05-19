@@ -64,9 +64,9 @@ int main(int argc, char * argv[])
     {
       // Check if string ends in accept state.
       if (q == accept1 || q == accept2 || q == accept3 || q == accept4)
-        cout << "\t \t Pass" << endl;
+        cout << "\t \t Accept" << endl;
       else
-        cout << "\t \t Fail" << endl;
+        cout << "\t \t Reject" << endl;
 
       file.ignore();
       q = 0; // Go back to initial state.
@@ -100,8 +100,10 @@ int transition(int q, char input)
       if (input - '0' >= 0 && input - '0' <= 9) return 3;
       if (input == '.') return 4;
       break;
-    case 4:
     case 5:
+      if (input - '0' >= 0 && input - '0' <= 9) return 6;
+      break;
+    case 4:
     case 6:
       if (input - '0' >= 0 && input - '0' <= 9) return 6;
       if (input == 'e') return 7;
