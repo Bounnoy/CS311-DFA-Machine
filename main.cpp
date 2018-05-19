@@ -8,8 +8,16 @@
 #include <fstream>
 using namespace std;
 
+int transition(int q, char input);
+
 int main(int argc, char * argv[])
 {
+  // Initial state.
+  int q = 0;
+
+  // List of accept states.
+  int accept1 = 3, accept2 = 4, accept3 = 6, accept4 = 9;
+
   // Check number of command line parameters.
   if (argc > 2) {
     cerr  << "Too many parameters." << endl
@@ -48,12 +56,20 @@ int main(int argc, char * argv[])
 
   while (file >> input)
   {
+    q = transition(q, input);
+
     cout << input;
 
     if (file.peek() == '\n')
     {
-      cout << endl;
+      // Check if string ends in accept state.
+      if (q == accept1 || q == accept2 || q == accept3 || q == accept4)
+        cout << "\t \t Pass" << endl;
+      else
+        cout << "\t \t Fail" << endl;
+
       file.ignore();
+      q = 0; // Go back to initial state.
     }
   }
 
@@ -61,4 +77,48 @@ int main(int argc, char * argv[])
   file.close();
 
   return 0;
+}
+
+// Transition function for the DFA.
+int transition(int q, char input)
+{
+  // Each case represents being in that state.
+  switch (q)
+  {
+    case 0:
+      if (input - '0' >= 0 && input - '0' <= 9) return 3;
+      if (input == '+') return 2;
+      if (input == '-') return 1;
+      if (input == '.') return 4;
+      break;
+    case 1:
+    case 2:
+      if (input - '0' >= 0 && input - '0' <= 9) return 3;
+      if (input == '.') return 5;
+      break;
+    case 3:
+      if (input - '0' >= 0 && input - '0' <= 9) return 3;
+      if (input == '.') return 4;
+      break;
+    case 4:
+    case 5:
+    case 6:
+      if (input - '0' >= 0 && input - '0' <= 9) return 6;
+      if (input == 'e') return 7;
+      if (input == 'E') return 8;
+      break;
+    case 7:
+    case 8:
+      if (input - '0' >= 0 && input - '0' <= 9) return 9;
+      if (input == '+') return 10;
+      if (input == '-') return 11;
+      break;
+    case 9:
+    case 10:
+    case 11:
+      if (input - '0' >= 0 && input - '0' <= 9) return 9;
+      break;
+  }
+
+  return 12;
 }
