@@ -74,3 +74,19 @@ Dead| Dead | Dead | Dead | Dead | Dead | Dead
 \+ -3
 
 23.e
+
+## Compile first.
+Pretty common sense, but just in case... run the following command in terminal:
+
+`g++ -Wall main.cpp -o main`
+
+## How to run the program.
+There are two ways to run the program.
+
+`./main`
+
+This will prompt you for a filename and then check all the strings in that file to see if they're valid floating point numbers.
+
+`./main filename.txt`
+
+This is a shortcut and will bypass the prompt.
