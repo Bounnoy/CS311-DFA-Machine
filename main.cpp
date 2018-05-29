@@ -16,7 +16,7 @@ int main(int argc, char * argv[])
   int q = 0;
 
   // List of accept states.
-  int accept1 = 3, accept2 = 4, accept3 = 6, accept4 = 9;
+  int accept1 = 2, accept2 = 3, accept3 = 5, accept4 = 8;
 
   // Check number of command line parameters.
   if (argc > 2) {
@@ -86,41 +86,35 @@ int transition(int q, char input)
   switch (q)
   {
     case 0:
-      if (input - '0' >= 0 && input - '0' <= 9) return 3;
-      if (input == '+') return 2;
-      if (input == '-') return 1;
-      if (input == '.') return 4;
+      if (input - '0' >= 0 && input - '0' <= 9) return 2;
+      if (input == '+' || input == '-') return 1;
+      if (input == '.') return 3;
       break;
     case 1:
-    case 2:
-      if (input - '0' >= 0 && input - '0' <= 9) return 3;
-      if (input == '.') return 5;
-      break;
-    case 3:
-      if (input - '0' >= 0 && input - '0' <= 9) return 3;
+      if (input - '0' >= 0 && input - '0' <= 9) return 2;
       if (input == '.') return 4;
       break;
-    case 5:
-      if (input - '0' >= 0 && input - '0' <= 9) return 6;
+    case 2:
+      if (input - '0' >= 0 && input - '0' <= 9) return 2;
+      if (input == '.') return 3;
       break;
     case 4:
-    case 6:
-      if (input - '0' >= 0 && input - '0' <= 9) return 6;
-      if (input == 'e') return 7;
-      if (input == 'E') return 8;
+      if (input - '0' >= 0 && input - '0' <= 9) return 5;
+      break;
+    case 3:
+    case 5:
+      if (input - '0' >= 0 && input - '0' <= 9) return 5;
+      if (input == 'e'|| input == 'E') return 7;
       break;
     case 7:
-    case 8:
-      if (input - '0' >= 0 && input - '0' <= 9) return 9;
-      if (input == '+') return 10;
-      if (input == '-') return 11;
+      if (input - '0' >= 0 && input - '0' <= 9) return 8;
+      if (input == '+'|| input == '-') return 9;
       break;
+    case 8:
     case 9:
-    case 10:
-    case 11:
-      if (input - '0' >= 0 && input - '0' <= 9) return 9;
+      if (input - '0' >= 0 && input - '0' <= 9) return 8;
       break;
   }
 
-  return 12;
+  return 10;
 }
