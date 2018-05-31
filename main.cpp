@@ -16,7 +16,7 @@ int main(int argc, char * argv[])
   int q = 0;
 
   // List of accept states.
-  int accept1 = 2, accept2 = 3, accept3 = 5, accept4 = 8;
+  int accept1 = 3, accept2 = 4, accept3 = 7;
 
   // Check number of command line parameters.
   if (argc > 2) {
@@ -63,7 +63,7 @@ int main(int argc, char * argv[])
     if (file.peek() == '\n')
     {
       // Check if string ends in accept state.
-      if (q == accept1 || q == accept2 || q == accept3 || q == accept4)
+      if (q == accept1 || q == accept2 || q == accept3)
         cout << "\t \t Accept" << endl;
       else
         cout << "\t \t Reject" << endl;
@@ -86,35 +86,34 @@ int transition(int q, char input)
   switch (q)
   {
     case 0:
-      if (input - '0' >= 0 && input - '0' <= 9) return 2;
-      if (input == '+' || input == '-') return 1;
-      if (input == '.') return 3;
+      if (input - '0' >= 0 && input - '0' <= 9) return 3;
+      if (input == '+' || input == '-') return 2;
+      if (input == '.') return 1;
       break;
     case 1:
-      if (input - '0' >= 0 && input - '0' <= 9) return 2;
-      if (input == '.') return 4;
+      if (input - '0' >= 0 && input - '0' <= 9) return 4;
       break;
     case 2:
-      if (input - '0' >= 0 && input - '0' <= 9) return 2;
-      if (input == '.') return 3;
-      break;
-    case 4:
-      if (input - '0' >= 0 && input - '0' <= 9) return 5;
+      if (input - '0' >= 0 && input - '0' <= 9) return 3;
+      if (input == '.') return 1;
       break;
     case 3:
+      if (input - '0' >= 0 && input - '0' <= 9) return 3;
+      if (input == '.') return 4;
+      break;
+    case 4:
+      if (input - '0' >= 0 && input - '0' <= 9) return 4;
+      if (input == 'e'|| input == 'E') return 5;
+      break;
     case 5:
-      if (input - '0' >= 0 && input - '0' <= 9) return 5;
-      if (input == 'e'|| input == 'E') return 7;
+      if (input - '0' >= 0 && input - '0' <= 9) return 7;
+      if (input == '+'|| input == '-') return 6;
       break;
+    case 6:
     case 7:
-      if (input - '0' >= 0 && input - '0' <= 9) return 8;
-      if (input == '+'|| input == '-') return 9;
-      break;
-    case 8:
-    case 9:
-      if (input - '0' >= 0 && input - '0' <= 9) return 8;
+      if (input - '0' >= 0 && input - '0' <= 9) return 7;
       break;
   }
 
-  return 10;
+  return 8;
 }
