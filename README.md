@@ -10,6 +10,9 @@ This program simulates a DFA machine that recognizes a floating point number.
 ## State Diagram
 <img src="img/diagram1.png" />
 
+## State Diagram (Minimal)
+<img src="img/diagram2.png" />
+
 ## Transition Table
 DFA | 0-9  | +    | -    | .    | e    | E
 --- | ---- | ---- | ---- | ---- | ---- | ----
@@ -25,6 +28,19 @@ q8  | q9   | q10  | q11  | Dead | Dead | Dead
 q9  | q9   | Dead | Dead | Dead | Dead | Dead
 q10 | q9   | Dead | Dead | Dead | Dead | Dead
 q11 | q9   | Dead | Dead | Dead | Dead | Dead
+Dead| Dead | Dead | Dead | Dead | Dead | Dead
+
+## Transition Table (Minimal)
+DFA | 0-9  | +    | -    | .    | e    | E
+--- | ---- | ---- | ---- | ---- | ---- | ----
+q0  | q3   | q2   | q2   | q1   | Dead | Dead
+q1  | q4   | Dead | Dead | Dead | Dead | Dead
+q2  | q3   | Dead | Dead | q1   | Dead | Dead
+q3  | q3   | Dead | Dead | q4   | Dead | Dead
+q4  | q4   | Dead | Dead | Dead | q5   | q5
+q5  | q7   | q6   | q6   | Dead | Dead | Dead
+q6  | q7   | Dead | Dead | Dead | Dead | Dead
+q7  | q7   | Dead | Dead | Dead | Dead | Dead
 Dead| Dead | Dead | Dead | Dead | Dead | Dead
 
 ## Examples of Accepted Strings
